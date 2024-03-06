@@ -8,7 +8,7 @@ var fetchUser = require('../middleware/fetchUser')
 
 const JWTSECRET = 'jfibgvierjkfrgbre'
 
-// ROUTE- 2 Create a User using: POST "/api/auth/createUser". Does not reuire authentication
+// ROUTE- 1 Create a User using: POST "/api/auth/createUser". Does not reuire authentication
 router.post('/createUser', [
 
     body('email').isEmail(),
