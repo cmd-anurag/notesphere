@@ -33,7 +33,7 @@ router.post('/addnote', fetchUser, [
 })
 
 
-// [Read ]ROUTE 2 - Route to fetch all the notes of a logged in user using : GET "/api/notes/fetchallnotes"
+// [Read] ROUTE 2 - Route to fetch all the notes of a logged in user using : GET "/api/notes/fetchallnotes"
 router.get('/fetchallnotes', fetchUser, async (req, res)=> {
 
     try{
@@ -85,7 +85,6 @@ router.put('/updatenote/:id', fetchUser, async (req, res)=> {
 router.delete('/deletenote/:id', fetchUser, async(req, res)=> {
 
     try {
-        const {title, description, tag} = req.body
         // find the note to be deleted
         let note = await Notes.findById(req.params.id);
         if(!note) {
