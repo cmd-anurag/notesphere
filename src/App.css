@@ -3,3 +3,20 @@ h1 {
   color:darkslateblue;
   font-weight: 780;
 }
+
+.modal-body {
+  width: 100%;
+}
+
+.modal-open {
+    z-index: 10;
+    position: absolute;
+    background: #c6c6c6;
+    padding: 30px;
+    width: 35vw;
+    min-width: 280px;
+}
+.test {
+    display: flex;
+    justify-content: center;
+}

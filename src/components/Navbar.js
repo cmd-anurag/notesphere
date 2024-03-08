@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom' 
 
 
@@ -7,12 +7,7 @@ import { Link, useLocation } from 'react-router-dom'
 export default function Navbar() {
 
   let location = useLocation();
-  useEffect(()=> {
-    console.log(location);
-  },[location]);
   
-
-
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary navbar-dark" data-bs-theme="dark">
