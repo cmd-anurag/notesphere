@@ -10,13 +10,17 @@ h1 {
 
 .modal-open {
     z-index: 10;
-    position: absolute;
+    position: fixed;
     background: #c6c6c6;
     padding: 30px;
     width: 35vw;
     min-width: 280px;
+    border-radius: 20px;
+    top: 100px;
+    border: 2px solid black;
 }
 .test {
     display: flex;
     justify-content: center;
+    align-items: center;
 }

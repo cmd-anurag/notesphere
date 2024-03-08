@@ -10,7 +10,7 @@ export default function Navbar() {
   
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary navbar-dark" data-bs-theme="dark">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
   <div className="container-fluid">
     <Link className="navbar-brand" to='/'>
     <img src="./note.png" alt="Logo" width="30" height="24" className="d-inline-block align-text-top" />

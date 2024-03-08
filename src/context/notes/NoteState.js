@@ -7,7 +7,7 @@ const NoteState = (props) => {
     
     const notesInitial = [
           {
-            "_id": "65e8a180ca19362ad727dc1b",
+            "_id": "65e8a134580ca19362ad727dc1b",
             "user": "65e89996a4de18bbcee68281",
             "title": "note heading",
             "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus recusandae commodi omnis ipsum quaerat? Omnis vero magnam facere, fugit quaerat incidunt, sit optio, laboriosam possimus repudiandae iste quibusdam modi eaque.",
@@ -16,7 +16,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "65eb30573228db691af65603",
+            "_id": "45",
             "user": "65e89996a4de18bbcee68281",
             "title": "My Note",
             "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus recusandae commodi omnis ipsum quaerat? Omnis vero magnam facere, fugit quaerat incidunt, sit optio, laboriosam possimus repudiandae iste quibusdam modi eaque.",
@@ -25,7 +25,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "65eb307a3228db691af65606",
+            "_id": "65eb307a33228db691af65606",
             "user": "65e89996a4de18bbcee68281",
             "title": "My Note xyz",
             "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus recusandae commodi omnis ipsum quaerat? Omnis vero magnam facere, fugit quaerat incidunt, sit optio, laboriosam possimus repudiandae iste quibusdam modi eaque.",
@@ -34,7 +34,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "65eb307a3228db691af65606",
+            "_id": "65eb307a32281db691af65606",
             "user": "65e89996a4de18bbcee68281",
             "title": "My Note xyz",
             "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus recusandae commodi omnis ipsum quaerat? Omnis vero magnam facere, fugit quaerat incidunt, sit optio, laboriosam possimus repudiandae iste quibusdam modi eaque.",
@@ -43,7 +43,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "65eb307a3228db691af65606",
+            "_id": "65eb307a3228d4b691af65606",
             "user": "65e89996a4de18bbcee68281",
             "title": "My Note xyz",
             "description": "This is my fourth note",
@@ -52,7 +52,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "65eb307a3228db691af65606",
+            "_id": "65eb307a3228db5691af65606",
             "user": "65e89996a4de18bbcee68281",
             "title": "My Note xyz",
             "description": "This is my fourth note",

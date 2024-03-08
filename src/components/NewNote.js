@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import NoteContext from '../context/notes/NoteContext'
+// import Alert from './Alert'
 
 export default function NewNote() {
 
-    
+const context = useContext(NoteContext)
+const {notes, setNotes} = context;
+ 
 const [modal, setModal] = useState(false);
 
   const showAddNote = (event) => {
@@ -12,10 +16,25 @@ const [modal, setModal] = useState(false);
   const hideAddNote = (event) => {
     setModal(false);
   }
+
+  // Add a note
+  const addNote = () => {
+    let title = window.document.getElementById('title').value
+    let description = window.document.getElementById('description').value
+    let tag = window.document.getElementById('tag').value
+
+    setNotes([...notes, {"title": title, "description": description, "tag": tag}])
+
+    setModal(false);
+  }
+
+
+
   return (
     <div>
         
 <button onClick={showAddNote} type="button" className="btn btn-success">Add New Note</button>
+
 {modal &&
 <div className='test'>
 <div className="modal-open fade show" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -31,8 +50,8 @@ const [modal, setModal] = useState(false);
             <input type="text" className="form-control" id="title" />
           </div>
           <div className="form-group">
-            <label htmlFor="message-text" className="col-form-label">Content:</label>
-            <textarea className="form-control" id="message-text"></textarea>
+            <label htmlFor="description" className="col-form-label">Content:</label>
+            <textarea className="form-control" id="description"></textarea>
           </div>
           <div className="form-group">
             <label htmlFor="tag" className="col-form-label">Tag</label>
@@ -42,7 +61,7 @@ const [modal, setModal] = useState(false);
       </div>
       <div className="modal-footer">
         <button onClick={hideAddNote} type="button" className="btn btn-warning mx-2 my-3" data-dismiss="modal">Cancel</button>
-        <button type="button" className="btn btn-success mx-2 my-2">Add Note</button>
+        <button onClick={addNote} type="button" className="btn btn-success mx-2 my-2">Add Note</button>
       </div>
     </div>
   </div>

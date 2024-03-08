@@ -9,6 +9,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+// import Alert from './components/Alert';
 
 function App() {
   return (
@@ -17,7 +18,6 @@ function App() {
     <BrowserRouter>
 
     <Navbar />
-
     <Routes>
       <Route exact path='/' element={<Home />} />
       <Route exact path='/about' element={<About />} />
