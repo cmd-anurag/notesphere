@@ -4,6 +4,9 @@ import NoteContext from './NoteContext'
 
 
 const NoteState = (props) => {
+
+  
+
   const notesInitial = []
   const[notes, setNotes] = useState(notesInitial);
     const getNotes = async()=> {

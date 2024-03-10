@@ -1,12 +1,13 @@
 import React, {useContext} from 'react'
 import NoteContext from '../context/notes/NoteContext'
 
-const DeleteNote = ({note}) => {
+const DeleteNote = ({note, showAlert}) => {
     const context = useContext(NoteContext);
     const {notes, setNotes} = context;
     const host = "http://localhost:5000"
     
     const deleteNote = async (id) => {
+      try {
         const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
           method: 'DELETE',
           headers: {
@@ -17,6 +18,11 @@ const DeleteNote = ({note}) => {
         })
         
         setNotes(notes.filter(note => note._id !== id));
+        showAlert('success', 'Successfully Deleted the Note')
+      }
+      catch(error) {
+        showAlert('danger', 'Internal Server Error. Pleae try again later.')
+      }
       }
   return (
     

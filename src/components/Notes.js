@@ -3,7 +3,7 @@ import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 
 
-export default function Notes() {
+export default function Notes(props) {
   const context = useContext(NoteContext);
   const { notes, getNotes } = context;
 
@@ -18,7 +18,7 @@ export default function Notes() {
       <div className="row">
         {notes.map((note) => {
           return (
-            <NoteItem key={note._id} note={note}/>
+            <NoteItem showAlert={props.showAlert} key={note._id} note={note}/>
           );
         })}
       </div>

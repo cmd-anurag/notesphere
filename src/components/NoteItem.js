@@ -4,14 +4,14 @@ import EditNote from "./EditNote";
 
 export default function NoteItem(props) {
 
-  const { note} = props;
+  const { note, showAlert} = props;
  
   return (
     <>
     
     <div className="col-md-3">
-      <DeleteNote note={note} />
-      <EditNote note={note} />
+      <DeleteNote showAlert={showAlert} note={note} />
+      <EditNote showAlert={showAlert} note={note} />
       <div className="card my-3" style={{width: "18rem"}}>
         <div className="card-body">
           <h5 className="card-title">{note.title}</h5>

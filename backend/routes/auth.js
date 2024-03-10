@@ -19,7 +19,7 @@ router.post('/createUser', [
    
     const errors = validationResult(req); // checking if there are any errors 
     if(!errors.isEmpty()) {
-        return res.status(400).json({errors: errors.array()});
+        return res.status(400).json({result: false, errors: errors.array()});
     }
 
 
@@ -27,7 +27,7 @@ router.post('/createUser', [
         // Check if the user with the given email exists already
     let user = await User.findOne({email: req.body.email})
     if (user) {
-        return res.status(400).json({error: "A user with this email already exists"})
+        return res.status(400).json({result: false, error: "A user with this email already exists"})
     }
 
     // adding a salt and creating a hash for password provided by user
@@ -48,7 +48,7 @@ router.post('/createUser', [
     }
     
     const authToken = jwt.sign(data, JWTSECRET);
-    res.json({authToken})
+    res.json({result: true, authtoken: authToken})
     }
     catch(error) {
         res.status(500).send("Internal Server Error")
@@ -61,12 +61,12 @@ router.post('/createUser', [
 router.post('/login', [
 
     body('email', 'Enter a Valid Email').isEmail(),
-    body('password', 'Password cannot be blank').exists(),
+    body('password', 'Invalid Password').exists(),
 
 ], async (req, res) => {
     const errors = validationResult(req); // checking if there are any errors 
     if(!errors.isEmpty()) {
-        return res.status(400).json({errors: errors.array()});
+        return res.status(400).json({result: false, errors: errors.array()});
     }
 
 
@@ -75,11 +75,11 @@ router.post('/login', [
         // trying to find if the user with the provided email exists
         let user = await User.findOne({email});
         if (!user) {
-            return res.status(400).json({error: "Incorrect Credentials"})
+            return res.status(400).json({result: false, error: "User does not exist"})
         }
         // comparing the passwords
         const passwordCompare = await bcrypt.compare(password, user.password);
-        if(!passwordCompare) {return res.status(400).json({error: "Incorrect Credentials"})
+        if(!passwordCompare) {return res.status(400).json({result: false, error: "Incorrect Credentials"})
     }
     // if passwords match
     const data = {
@@ -89,7 +89,7 @@ router.post('/login', [
     }
     // if a user is succesfully logged , return the id of the user as the data of auth token.
     const authToken = jwt.sign(data, JWTSECRET);
-    res.json({authToken})
+    res.json({result: true, authtoken: authToken})
 
     }
     catch(error) {

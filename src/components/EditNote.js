@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import NoteContext from "../context/notes/NoteContext";
 
-const EditNote = ({ note }) => {
+const EditNote = ({ note, showAlert }) => {
+  
   const host = "http://localhost:5000";
   const context = useContext(NoteContext);
   const { notes, setNotes } = context;
@@ -15,8 +16,9 @@ const EditNote = ({ note }) => {
     setDescription(note.description);
     setTag(note.tag);
   }, [note]);
-
+  
   const editNote = async (id, title, description, tag) => {
+    try {
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
@@ -28,6 +30,14 @@ const EditNote = ({ note }) => {
     });
     const json = await response.json();
     setNotes(notes.map(note => note._id === id? json : note))
+    if(json) {
+      showAlert('success', "Successfully Updated the Note");
+    }
+  }
+  catch(error) {
+    showAlert('danger', 'An Internal Server Error Occured. Please try again later');
+  }
+    
   };
   return (
     <div>

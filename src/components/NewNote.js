@@ -1,8 +1,9 @@
 import React, {useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext'
-// import Alert from './Alert'
+import Alert from './Alert';
 
-export default function NewNote() {
+
+export default function NewNote(props) {
 
 const context = useContext(NoteContext)
 const {notes, setNotes} = context;
@@ -15,7 +16,7 @@ const host = "http://localhost:5000";
     const [tag, setTag] = useState('');
   // Add a note
   const addNote = async () => {
-
+    try {
     const response = await fetch(`${host}/api/notes/addnote`, {
       method: 'POST',
       headers: {
@@ -31,6 +32,11 @@ const host = "http://localhost:5000";
     setTitle('');
     setDescription('');
     setTag('');
+    props.showAlert('success', 'Successfully Added a New Note');
+  }
+  catch(error) {
+    props.showAlert('danger', 'Internal Server Error. Please try again later');
+  }
   }
 
 
