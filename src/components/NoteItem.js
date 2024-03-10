@@ -1,19 +1,17 @@
-import React, {useContext} from "react";
-import NoteContext from '../context/notes/NoteContext'
+import React from "react";
+import DeleteNote from "./DeleteNote";
+import EditNote from "./EditNote";
 
 export default function NoteItem(props) {
 
-
-  const context = useContext(NoteContext);
-  const {notes, setNotes} = context;
-  const { note } = props;
-
-  const deleteNote = (id) => {
-    setNotes(notes.filter(note => note._id !== id))
-  }
-
+  const { note} = props;
+ 
   return (
+    <>
+    
     <div className="col-md-3">
+      <DeleteNote note={note} />
+      <EditNote note={note} />
       <div className="card my-3" style={{width: "18rem"}}>
         <div className="card-body">
           <h5 className="card-title">{note.title}</h5>
@@ -21,10 +19,12 @@ export default function NoteItem(props) {
           <p className="card-text">
           {note.description}
           </p>
-          <i className="mx-2 fa-solid fa-pencil"></i>
-          <i onClick={()=>{deleteNote(note._id)}} className="mx-2 fa-solid fa-trash"></i>
+          <i data-bs-toggle="modal" data-bs-target={`#edit${note._id}`} className="mx-2 fa-solid fa-pencil"></i>
+          <i data-bs-toggle="modal" data-bs-target={`#delete${note._id}`} className="mx-2 fa-solid fa-trash"></i>
         </div>
       </div>      
     </div>
+    
+    </>
   );
 }
