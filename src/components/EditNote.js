@@ -94,12 +94,13 @@ const EditNote = ({ note }) => {
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-dark"
+                className="btn btn-warning"
                 data-bs-dismiss="modal"
               >
-                Close
+                Cancel
               </button>
               <button
+                disabled={title.length>0?false:true}
                 data-bs-dismiss="modal"
                 onClick={() => {
                   editNote(note._id, title, description, tag);

@@ -9,7 +9,7 @@ export default function Home() {
     
 
     <div className='container'>
-      <h1 className='my-4'>NoteSphere</h1>
+      <h1 className='heading my-4'>NoteSphere</h1>
       <NewNote />
       <h3 className='my-4'>Your Notes</h3>
       <Notes />

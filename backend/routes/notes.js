@@ -9,8 +9,7 @@ const { body, validationResult } = require('express-validator')
 
 // [Create] ROUTE 1 - Add notes of a logged in user using : POST "/api/notes/addnote" login required
 router.post('/addnote', fetchUser, [
-    body('title', 'Enter a valid title').isLength({min: 1}),
-    body('description', 'Enter a valid description').isLength({min: 5}),
+    body('title', 'Enter a valid title').isLength({min: 1})
 ], async (req, res)=> {
 
     const errors = validationResult(req); // checking if there are any errors 

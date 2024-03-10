@@ -1,4 +1,4 @@
-import React, {useContext } from 'react'
+import React, {useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext'
 // import Alert from './Alert'
 
@@ -8,15 +8,13 @@ const context = useContext(NoteContext)
 const {notes, setNotes} = context;
  
 
-const host = "http://localhost:5000"
+const host = "http://localhost:5000";
   
-
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [tag, setTag] = useState('');
   // Add a note
   const addNote = async () => {
-
-    let title = window.document.getElementById('title').value
-    let description = window.document.getElementById('description').value
-    let tag = window.document.getElementById('tag').value
 
     const response = await fetch(`${host}/api/notes/addnote`, {
       method: 'POST',
@@ -27,19 +25,19 @@ const host = "http://localhost:5000"
       body: JSON.stringify({title, description, tag})
     });
     const json = await response.json();
-    
  
     setNotes([...notes, {"_id":json.savedNote._id,"title": title, "description": description, "tag": tag}])
-    window.document.getElementById('title').value = '';
-    window.document.getElementById('description').value = '';
-    window.document.getElementById('tag').value = '';
+    
+    setTitle('');
+    setDescription('');
+    setTag('');
   }
 
 
 
   return (
     <>
-<button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add a Note</button>
+<button type="button" className="addnote btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add a Note</button>
 
 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
@@ -52,21 +50,21 @@ const host = "http://localhost:5000"
         <form>
           <div className="mb-3">
             <label htmlFor="title" className="col-form-label">Title</label>
-            <input type="text" className="form-control" id="title" />
+            <input value={title} onChange={e=>{setTitle(e.target.value)}} type="text" className="form-control" id="title" />
           </div>
           <div className="mb-3">
             <label htmlFor="description" className="col-form-label">Content:</label>
-            <textarea className="form-control" id="description"></textarea>
+            <textarea value={description} onChange={e=>{setDescription(e.target.value)}} className="form-control" id="description"></textarea>
           </div>
           <div className="mb-3">
             <label htmlFor="description" className="col-form-label">Tag:</label>
-            <input autoComplete='off' type="text" className="form-control" id="tag" />
+            <input value={tag} onChange={e=>{setTag(e.target.value)}} autoComplete='off' type="text" className="form-control" id="tag" />
           </div>
         </form>
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
-        <button data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={addNote} type="button" className="btn btn-success">Add Note</button>
+        <button disabled={title.length>0?false:true} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={addNote} type="button" className="btn btn-success">Add Note</button>
       </div>
     </div>
   </div>

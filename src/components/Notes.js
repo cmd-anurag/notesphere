@@ -15,10 +15,6 @@ export default function Notes() {
 
   return (
     <>
-
-    
-    
-    
       <div className="row">
         {notes.map((note) => {
           return (
