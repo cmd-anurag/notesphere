@@ -21,7 +21,6 @@ const Login = (props) => {
             body: JSON.stringify({email, password})
           });
         const json = await response.json();
-        console.log(json);
         if(json.result) {
             // save token and redirect
             localStorage.setItem('token', json.authtoken);
@@ -30,7 +29,7 @@ const Login = (props) => {
             props.showAlert('success', 'Login Successful!');
         }
         else {
-            props.showAlert('danger', 'Incorrect Email/Password.');
+            props.showAlert('danger', json.error);
         }
 
     }

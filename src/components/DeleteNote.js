@@ -19,10 +19,14 @@ const DeleteNote = ({note, showAlert}) => {
         
         setNotes(notes.filter(note => note._id !== id));
         showAlert('success', 'Successfully Deleted the Note')
+        if(response) {
+            //ignore this if
+        }
       }
       catch(error) {
         showAlert('danger', 'Internal Server Error. Pleae try again later.')
       }
+      
       }
   return (
     

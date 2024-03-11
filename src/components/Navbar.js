@@ -34,7 +34,7 @@ export default function Navbar() {
       </ul>
         {!localStorage.getItem('token') && <Link to="/login" className="btn btn-outline-success mx-2" type="submit">Login</Link>}
         {!localStorage.getItem('token') && <Link to="/signup" className="btn btn-outline-primary mx-2" type="submit">Sign Up</Link>}
-        {localStorage.getItem('token') && <button onClick={logout} type="button" class="btn btn-outline-danger">Logout</button>}
+        {localStorage.getItem('token') && <button onClick={logout} type="button" className="btn btn-outline-danger">Logout</button>}
     </div>
   </div>
 </nav>
