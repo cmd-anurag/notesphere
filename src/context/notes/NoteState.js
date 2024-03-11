@@ -10,7 +10,7 @@ const NoteState = (props) => {
   const notesInitial = []
   const[notes, setNotes] = useState(notesInitial);
   const getNotes = async()=> {
-      const response = await fetch('http://localhost:5000/api/notes/fetchallnotes/', {
+      const response = await fetch('https://notesphere-jyst.onrender.com/api/notes/fetchallnotes/', {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
