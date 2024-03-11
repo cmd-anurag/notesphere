@@ -1,6 +1,6 @@
 import React, {useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext'
-import Alert from './Alert';
+
 
 
 export default function NewNote(props) {

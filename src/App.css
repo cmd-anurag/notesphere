@@ -30,3 +30,12 @@ button:disabled {
   color: transparent;
   background-clip: text;
 }
+.auth-box {
+  margin-top: 40px;
+  width: auto;
+  max-width: 40vw;
+  min-width: fit-content;
+  border: 3px solid #1d263e;
+  padding: 50px;
+  border-radius: 20px;
+}

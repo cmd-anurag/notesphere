@@ -1,12 +1,16 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom' 
+import { Link, useLocation, useNavigate } from 'react-router-dom' 
 
 
 
 export default function Navbar() {
 
   let location = useLocation();
-  
+  let navigate = useNavigate();
+  const logout = () => {
+    navigate('/login');
+    localStorage.removeItem('token');
+  }
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
@@ -28,8 +32,9 @@ export default function Navbar() {
         </li>
         
       </ul>
-        <Link to="/login" className="btn btn-outline-success mx-2" type="submit">Login</Link>
-        <Link to="/signup" className="btn btn-outline-primary mx-2" type="submit">Sign Up</Link>
+        {!localStorage.getItem('token') && <Link to="/login" className="btn btn-outline-success mx-2" type="submit">Login</Link>}
+        {!localStorage.getItem('token') && <Link to="/signup" className="btn btn-outline-primary mx-2" type="submit">Sign Up</Link>}
+        {localStorage.getItem('token') && <button onClick={logout} type="button" class="btn btn-outline-danger">Logout</button>}
     </div>
   </div>
 </nav>

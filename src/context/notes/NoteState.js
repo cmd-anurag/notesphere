@@ -9,12 +9,12 @@ const NoteState = (props) => {
 
   const notesInitial = []
   const[notes, setNotes] = useState(notesInitial);
-    const getNotes = async()=> {
+  const getNotes = async()=> {
       const response = await fetch('http://localhost:5000/api/notes/fetchallnotes/', {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
-          'authtoken':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjVlODk5OTZhNGRlMThiYmNlZTY4MjgxIn0sImlhdCI6MTcwOTc0MjUwOX0.3ZxiVoxTHiPZLQeOZx80jkss0PyMabkUqDeY2pzQu4o'
+          'authtoken': localStorage.getItem('token')
         },
       })
       const json = await response.json();

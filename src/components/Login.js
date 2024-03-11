@@ -9,7 +9,10 @@ const Login = (props) => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        if(!password) {
+          props.showAlert('warning', 'Please enter a Password');
+          return
+        }
         const response = await fetch(`http://localhost:5000/api/auth/login`, {
             method: 'POST',
             headers: {
@@ -24,22 +27,21 @@ const Login = (props) => {
             localStorage.setItem('token', json.authtoken);
             
             navigate('/');
-            props.showAlert('success', 'Login Successful');
+            props.showAlert('success', 'Login Successful!');
         }
         else {
-            props.showAlert('danger', 'Incorrect Email/Password');
+            props.showAlert('danger', 'Incorrect Email/Password.');
         }
 
     }
 
   return (
-    <div className='container'>
-      
+    <div className='auth-box container'>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
          <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>
             <input value={email} onChange={e=>{setEmail(e.target.value)}} name='email' type="email" className="form-control" id="email" aria-describedby="emailHelp" />
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
             <label htmlFor="password" className="form-label">Password</label>
