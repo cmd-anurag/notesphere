@@ -9,7 +9,7 @@ const context = useContext(NoteContext)
 const {notes, setNotes} = context;
  
 
-const host = "http://localhost:5000";
+const host = "https://notesphere-jyst.onrender.com";
   
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -21,7 +21,7 @@ const host = "http://localhost:5000";
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        'authtoken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjVlODk5OTZhNGRlMThiYmNlZTY4MjgxIn0sImlhdCI6MTcwOTc0MjUwOX0.3ZxiVoxTHiPZLQeOZx80jkss0PyMabkUqDeY2pzQu4o'
+        'authtoken': localStorage.getItem('token')
       },
       body: JSON.stringify({title, description, tag})
     });

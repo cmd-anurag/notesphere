@@ -27,7 +27,7 @@ const Signup = (props) => {
     e.preventDefault();
     if(!validateForm()){return}
 
-    const response = await fetch(`http://localhost:5000/api/auth/createUser`, {
+    const response = await fetch(`https://notesphere-jyst.onrender.com/api/auth/createUser`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
