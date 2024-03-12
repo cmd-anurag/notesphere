@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import LoadingContext from '../context/LoadingContext'
+import Spinner from './Spinner'
 
 const Login = (props) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     let navigate = useNavigate();
+    const context = useContext(LoadingContext);
+    const {loading, setLoading} = context;
     
     const handleSubmit = async (e) => {
+      setLoading(true);
         e.preventDefault();
         if(!password) {
           props.showAlert('warning', 'Please enter a Password');
@@ -24,17 +29,20 @@ const Login = (props) => {
         if(json.result) {
             // save token and redirect
             localStorage.setItem('token', json.authtoken);
-            
+            setLoading(false);
             navigate('/');
             props.showAlert('success', 'Login Successful!');
         }
         else {
             props.showAlert('danger', json.error);
+            setLoading(false);
         }
 
     }
 
   return (
+    <div>
+      {loading? <Spinner message="Logging you in, Please Wait..." /> : 
     <div className='auth-box container'>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
@@ -48,6 +56,7 @@ const Login = (props) => {
         </div>
         <button type="submit" className="btn btn-primary">Login</button>
     </form>
+    </div>}
     </div>
   )
 }

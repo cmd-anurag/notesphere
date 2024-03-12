@@ -11,6 +11,16 @@ const EditNote = ({ note, showAlert }) => {
   const [description, setDescription] = useState(note.description);
   const [tag, setTag] = useState(note.tag);
 
+  let ititle = note.title;
+  let idescription = note.description;
+  let itag = note.tag;
+
+  const handleCancel = () => {
+    setTitle(ititle);
+    setDescription(idescription);
+    setTag(itag);
+  }
+
   useEffect(() => {
     setTitle(note.title);
     setDescription(note.description);
@@ -47,7 +57,7 @@ const EditNote = ({ note, showAlert }) => {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-lg">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
@@ -62,10 +72,7 @@ const EditNote = ({ note, showAlert }) => {
             </div>
             <div className="modal-body">
               <form>
-                <div className="mb-3">
-                  <label htmlFor="title" className="col-form-label">
-                    Title
-                  </label>
+                <div className="mb-3 form-floating">
                   <input
                     onChange={e=>setTitle(e.target.value)}
                     type="text"
@@ -73,22 +80,23 @@ const EditNote = ({ note, showAlert }) => {
                     id="title"
                     value={title}
                   />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="description" className="col-form-label">
-                    Content:
+                  <label htmlFor="title" className="col-form-label">
+                    Title
                   </label>
+                </div>
+                <div className="mb-3 form-floating">
                   <textarea
+                  style={{height: '180px'}}
                     onChange={e=>setDescription(e.target.value)}
                     value={description}
                     className="form-control"
                     id="description"
                   ></textarea>
-                </div>
-                <div className="mb-3">
                   <label htmlFor="description" className="col-form-label">
-                    Tag:
+                    Content
                   </label>
+                </div>
+                <div className="mb-3 form-floating">
                   <input
                   onChange={e=>setTag(e.target.value)}
                     value={tag}
@@ -97,6 +105,9 @@ const EditNote = ({ note, showAlert }) => {
                     className="form-control"
                     id="tag"
                   />
+                  <label htmlFor="description" className="col-form-label">
+                    Tags
+                  </label>
                 </div>
               </form>
             </div>
@@ -105,6 +116,7 @@ const EditNote = ({ note, showAlert }) => {
                 type="button"
                 className="btn btn-warning"
                 data-bs-dismiss="modal"
+                onClick={handleCancel}
               >
                 Cancel
               </button>

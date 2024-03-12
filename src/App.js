@@ -13,9 +13,11 @@ import {
   Routes,
 } from "react-router-dom";
 import Alert from './components/Alert';
+import LoadingState from './context/LoadingState';
 
 
 function App() {
+
   const[alert, setAlert] = useState(null);
 
   const showAlert = (type, message) => {
@@ -26,6 +28,7 @@ function App() {
   }
   return (
     <>
+    <LoadingState>
     <NoteState>
     <BrowserRouter>
 
@@ -40,6 +43,7 @@ function App() {
     
     </BrowserRouter>
     </NoteState>
+    </LoadingState>
     </>
   );
 }

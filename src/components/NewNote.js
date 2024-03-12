@@ -1,8 +1,6 @@
 import React, {useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext'
 
-
-
 export default function NewNote(props) {
 
 const context = useContext(NoteContext)
@@ -46,7 +44,7 @@ const host = "https://notesphere-jyst.onrender.com";
 <button type="button" className="addnote btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add a Note</button>
 
 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
+  <div className="modal-dialog modal-lg">
     <div className="modal-content">
       <div className="modal-header">
         <h1 className="modal-title fs-5" id="exampleModalLabel">New Note</h1>
@@ -54,17 +52,17 @@ const host = "https://notesphere-jyst.onrender.com";
       </div>
       <div className="modal-body">
         <form>
-          <div className="mb-3">
+          <div className="mb-3 form-floating">
+            <input placeholder='Add a title' value={title} onChange={e=>{setTitle(e.target.value)}} type="text" className="form-control" id="title" />
             <label htmlFor="title" className="col-form-label">Title</label>
-            <input value={title} onChange={e=>{setTitle(e.target.value)}} type="text" className="form-control" id="title" />
           </div>
-          <div className="mb-3">
-            <label htmlFor="description" className="col-form-label">Content:</label>
-            <textarea value={description} onChange={e=>{setDescription(e.target.value)}} className="form-control" id="description"></textarea>
+          <div className="mb-3 form-floating">
+            <textarea style={{height: '180px'}} placeholder='Write some content' value={description} onChange={e=>{setDescription(e.target.value)}} className="form-control" id="description"></textarea>
+            <label htmlFor="description" className="col-form-label">Content</label>
           </div>
-          <div className="mb-3">
-            <label htmlFor="description" className="col-form-label">Tag:</label>
-            <input value={tag} onChange={e=>{setTag(e.target.value)}} autoComplete='off' type="text" className="form-control" id="tag" />
+          <div className="mb-3 form-floating">
+            <input placeholder='Specify some tags' value={tag} onChange={e=>{setTag(e.target.value)}} autoComplete='off' type="text" className="form-control" id="tag" />
+            <label htmlFor="description" className="col-form-label">Tags</label>
           </div>
         </form>
       </div>

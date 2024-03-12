@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import LoadingContext from '../context/LoadingContext';
+import Spinner from './Spinner';
 
 
 const Signup = (props) => {
@@ -8,6 +10,8 @@ const Signup = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword,setCpassword] = useState('');
+  const context = useContext(LoadingContext);
+  const {loading, setLoading} = context;
   
   const validateForm = () => {
     if(!name) {
@@ -26,7 +30,7 @@ const Signup = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(!validateForm()){return}
-
+    setLoading(true);
     const response = await fetch(`https://notesphere-jyst.onrender.com/api/auth/createUser`, {
         method: 'POST',
         headers: {
@@ -38,14 +42,18 @@ const Signup = (props) => {
     if(json.result) {
       localStorage.setItem('token', json.authtoken);
       navigate('/');
+      setLoading(false);
       props.showAlert('success', 'Sign Up Successful!');
     }
     else {
       props.showAlert('danger', json.error);
+      setLoading(false);
     }
   }
 
   return (
+    <div>
+      {loading? <Spinner message="Creating an Account..." /> : 
     <div className='container auth-box'>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -68,6 +76,7 @@ const Signup = (props) => {
   </div>
   <button type="submit" className="btn btn-primary">Sign Up</button>
 </form>
+    </div>}
     </div>
   )
 }
