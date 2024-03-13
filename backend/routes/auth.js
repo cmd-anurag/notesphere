@@ -8,6 +8,14 @@ var fetchUser = require('../middleware/fetchUser')
 
 const JWTSECRET = 'jfibgvierjkfrgbre'
 
+
+
+// Ping Route  
+router.get('/ping', async(req, res)=> {
+    return res.status(200).json();
+}) 
+
+
 // ROUTE- 1 Create a User using: POST "/api/auth/createUser". Does not reuire authentication
 router.post('/createUser', [
 
