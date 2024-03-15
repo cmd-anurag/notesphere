@@ -19,7 +19,7 @@ export default function Home(props) {
       <h1 className='heading my-4'>NoteSphere</h1>
       <NewNote showAlert={props.showAlert} />
       {loading?<Spinner message="Hold on...Loading your notes"/> :
-      notes.length===0?<p className='my-4'>No Notes to Display, Add a note by clicking the <em>Add Note</em> button</p>: <h2 className='my-4'>Your Notes</h2>}
+      notes.length===0?<p style={{color: 'white'}} className='my-4'>No Notes to Display, Add a note by clicking the <em>Add Note</em> button</p>: <h2 style={{color: 'white'}} className='my-4'>Your Notes</h2>}
       <Notes showAlert={props.showAlert} />
     </div>
     </>

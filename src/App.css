@@ -2,14 +2,20 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  background-image: url('./components/homebg.jpeg');
   min-height: 100vh;
 }
 
+body.login-background {
+  background:  url('./components/loginbackground.svg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat;
+  color: white;
+}
 
 h1 {
   text-align: center;
-  color:darkslateblue;
   font-weight: 780;
 }
 
@@ -21,21 +27,92 @@ button:disabled {
   background: transparent !important;
 }
 
+
 .card {
-  background-color: #fffbf6;
+  color: #f0feff;
+  cursor: pointer;
+  background-color: #171b24;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px #000000;
+}
+.card-title {
+  margin-bottom: 25px;
+}
+.card h6 {
+  color: aliceblue !important;
+  font-style: italic;
+  font-weight: 100;
 }
 
 .heading {
-  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
+
   color: transparent;
   background-clip: text;
 }
 .auth-box {
+  box-shadow: 0px 0px 20px #000000;
+  min-height: 60vh;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  color: white;
   margin-top: 40px;
   width: auto;
   max-width: 40vw;
-  min-width: fit-content;
-  border: 3px solid #1d263e;
+  min-width: max-content;
   padding: 50px;
   border-radius: 20px;
+  line-height: 220%;
+}
+
+.auth-box input {
+  border: none;
+  background-color: #565d67;
+  color: white;
+  height: 50px;
+  border-radius: 15px;
+}
+.auth-box input:focus {
+  background-color: #565d67;
+  color: white;
+  height: 50px;
+  border-radius: 15px;
+}
+
+.modal.fade .modal-dialog {
+  
+  transform: scale(.8); 
+  transition: transform 0.3s ease; 
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
+}
+
+.modal {
+  backdrop-filter: blur(7px);
+}
+
+.modal-content {
+  background-color: #171b24 !important;
+  color: white;
+  text-wrap: wrap;
+  
+}
+.modal-header, .modal-footer  {
+  border: none !important;
+}
+.form-control {
+  background-color: #12151c;
+  color: white;
+}
+.form-control:focus {
+  background-color: #12151c;
+  color: white;
+}
+.col-form-label {
+  background: transparent;
+}
+.form-control {
+  border: none !important;
 }

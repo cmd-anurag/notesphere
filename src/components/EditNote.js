@@ -72,7 +72,10 @@ const EditNote = ({ note, showAlert }) => {
             </div>
             <div className="modal-body">
               <form>
-                <div className="mb-3 form-floating">
+                <div className="mb-3">
+                <label htmlFor="title" className="col-form-label">
+                    Title
+                  </label>
                   <input
                     onChange={e=>setTitle(e.target.value)}
                     type="text"
@@ -80,11 +83,12 @@ const EditNote = ({ note, showAlert }) => {
                     id="title"
                     value={title}
                   />
-                  <label htmlFor="title" className="col-form-label">
-                    Title
-                  </label>
+                  
                 </div>
-                <div className="mb-3 form-floating">
+                <div className="mb-3">
+                <label htmlFor="description" className="col-form-label">
+                    Content
+                  </label>
                   <textarea
                   style={{height: '180px'}}
                     onChange={e=>setDescription(e.target.value)}
@@ -92,11 +96,12 @@ const EditNote = ({ note, showAlert }) => {
                     className="form-control"
                     id="description"
                   ></textarea>
-                  <label htmlFor="description" className="col-form-label">
-                    Content
-                  </label>
+                  
                 </div>
-                <div className="mb-3 form-floating">
+                <div className="mb-3">
+                <label htmlFor="description" className="col-form-label">
+                    Tags
+                  </label>
                   <input
                   onChange={e=>setTag(e.target.value)}
                     value={tag}
@@ -105,9 +110,7 @@ const EditNote = ({ note, showAlert }) => {
                     className="form-control"
                     id="tag"
                   />
-                  <label htmlFor="description" className="col-form-label">
-                    Tags
-                  </label>
+                  
                 </div>
               </form>
             </div>

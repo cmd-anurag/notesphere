@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import LoadingContext from '../context/LoadingContext';
 import Spinner from './Spinner';
@@ -12,7 +12,13 @@ const Signup = (props) => {
   const [cpassword,setCpassword] = useState('');
   const context = useContext(LoadingContext);
   const {loading, setLoading} = context;
-  
+  useEffect(()=> {
+    document.body.classList.add('login-background')
+    
+    return () => {
+      document.body.classList.remove('login-background');
+    }
+  }, [])
   const validateForm = () => {
     if(!name) {
       props.showAlert('warning', 'Please enter a name.');
@@ -55,7 +61,7 @@ const Signup = (props) => {
     <div>
       {loading? <Spinner message="Creating an Account..." /> : 
     <div className='container auth-box'>
-      <h2>Sign Up</h2>
+      <h2 style={{textAlign: 'center'}}>Sign Up</h2>
       <form onSubmit={handleSubmit}>
     <div className="mb-3">
     <label htmlFor="name" className="form-label">Name</label>
@@ -64,17 +70,18 @@ const Signup = (props) => {
   <div className="mb-3">
     <label htmlFor="email" className="form-label">Email address</label>
     <input onChange={e=>{setEmail(e.target.value)}} value={email} name='email' type="email" className="form-control" id="email" aria-describedby="emailHelp" />
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div className="mb-3">
-    <label htmlFor="password" className="form-label">Password</label>
+    <label htmlFor="password" className="form-label"> Create Password</label>
     <input minLength={5} onChange={e=>{setPassword(e.target.value)}} value={password} name='password' type="password" className="form-control" id="password" />
   </div>
   <div className="mb-3">
     <label htmlFor="cpassword" className="form-label">Confirm Password</label>
     <input onChange={e=>{setCpassword(e.target.value)}} value={cpassword} name='cpassword' type="password" className="form-control" id="cpassword" />
   </div>
-  <button type="submit" className="btn btn-primary">Sign Up</button>
+  <div style={{display: 'flex', justifyContent: 'center'}}>
+  <button style={{width: '50%', height: '50px'}} type="submit" className="btn btn-primary">Sign Up</button>
+  </div>
 </form>
     </div>}
     </div>
