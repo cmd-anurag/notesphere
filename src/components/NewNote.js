@@ -52,17 +52,17 @@ const host = "https://notesphere-jyst.onrender.com";
       </div>
       <div className="modal-body">
         <form>
-          <div className="mb-3 form-floating">
-            <input placeholder='Add a title' value={title} onChange={e=>{setTitle(e.target.value)}} type="text" className="form-control" id="title" />
+          <div className="mb-3">
             <label htmlFor="title" className="col-form-label">Title</label>
+            <input placeholder='Add a title' value={title} onChange={e=>{setTitle(e.target.value)}} type="text" className="form-control" id="title" />
           </div>
-          <div className="mb-3 form-floating">
-            <textarea style={{height: '180px'}} placeholder='Write some content' value={description} onChange={e=>{setDescription(e.target.value)}} className="form-control" id="description"></textarea>
+          <div className="mb-3">
             <label htmlFor="description" className="col-form-label">Content</label>
+            <textarea style={{height: '180px'}} placeholder='Write some content' value={description} onChange={e=>{setDescription(e.target.value)}} className="form-control" id="description"></textarea>
           </div>
-          <div className="mb-3 form-floating">
-            <input placeholder='Specify some tags' value={tag} onChange={e=>{setTag(e.target.value)}} autoComplete='off' type="text" className="form-control" id="tag" />
+          <div className="mb-3">
             <label htmlFor="description" className="col-form-label">Tags</label>
+            <input placeholder='Specify some tags' value={tag} onChange={e=>{setTag(e.target.value)}} autoComplete='off' type="text" className="form-control" id="tag" />
           </div>
         </form>
       </div>

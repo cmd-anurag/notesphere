@@ -77,6 +77,7 @@ const EditNote = ({ note, showAlert }) => {
                     Title
                   </label>
                   <input
+                  placeholder="Add a Title"
                     onChange={e=>setTitle(e.target.value)}
                     type="text"
                     className="form-control"
@@ -90,6 +91,7 @@ const EditNote = ({ note, showAlert }) => {
                     Content
                   </label>
                   <textarea
+                  placeholder="Write some content"
                   style={{height: '180px'}}
                     onChange={e=>setDescription(e.target.value)}
                     value={description}
@@ -103,6 +105,7 @@ const EditNote = ({ note, showAlert }) => {
                     Tags
                   </label>
                   <input
+                  placeholder="Specify some tags"
                   onChange={e=>setTag(e.target.value)}
                     value={tag}
                     autoComplete="off"
