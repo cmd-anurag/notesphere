@@ -23,8 +23,10 @@ export default function NoteItem(props) {
           {length>100?note.description.slice(0, 100)+'....':note.description}
           </p>
           </div>
+          <div>
           <i data-bs-toggle="modal" data-bs-target={`#edit${note._id}`} className="mx-2 fa-solid fa-pencil"></i>
           <i data-bs-toggle="modal" data-bs-target={`#delete${note._id}`} className="mx-2 fa-solid fa-trash"></i>
+          </div>
         </div>
       </div>      
     </div>
