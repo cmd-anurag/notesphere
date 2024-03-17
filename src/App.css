@@ -30,15 +30,23 @@ button:disabled {
 
 
 .card {
+  border-radius: 10px;
   color: #f0feff;
   cursor: pointer;
   background-color: #171b24;
   margin-bottom: 20px;
   box-shadow: 0px 0px 10px #000000;
   padding: 10px;
-  height: 200px;
+  height: 220px;
   font-size: 15px;
 }
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .card-title {
   margin-bottom: 25px;
 }
@@ -122,4 +130,49 @@ button:disabled {
 }
 .form-control {
   border: none !important;
+}
+
+.fa-solid {
+  transition: all 0.3s;
+}
+
+.fa-trash:hover {
+  
+  color: red;
+}
+
+.fa-pen-to-square:hover {
+  
+  color: blue;
+}
+
+.fa-trash:hover::after {
+  text-align: center;
+  width: 90px;
+  border-radius: 10px;
+  font-size: 8px;
+  color:white;
+  content: "Delete Note";
+  position: absolute;
+  background-color: #3a3f4b;
+  padding: 6px;
+  border: 1px solid #000;
+  text-transform: none !important;
+  line-height: 150%;
+  word-spacing: 3px;
+}
+.fa-pen-to-square:hover::after {
+  text-align: center;
+  width: 90px;
+  border-radius: 10px;
+  font-size: 9px;
+  color:white;
+  content: "Edit Note";
+  position: absolute;
+  background-color: #3a3f4b;
+  padding: 6px;
+  border: 1px solid #000;
+  text-transform: none !important;
+  line-height: 150%;
+  word-spacing: 3px;
 }

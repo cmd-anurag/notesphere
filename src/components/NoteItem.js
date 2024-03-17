@@ -24,8 +24,8 @@ export default function NoteItem(props) {
           </p>
           </div>
           <div>
-          <i data-bs-toggle="modal" data-bs-target={`#edit${note._id}`} className="mx-2 fa-solid fa-pencil"></i>
-          <i data-bs-toggle="modal" data-bs-target={`#delete${note._id}`} className="mx-2 fa-solid fa-trash"></i>
+          <i data-bs-toggle="modal" data-bs-target={`#edit${note._id}`} className="mx-2 my-1 fa-solid fa-pen-to-square"></i>
+          <i data-bs-toggle="modal" data-bs-target={`#delete${note._id}`} className="mx-2 my-1 fa-solid fa-trash"></i>
           </div>
         </div>
       </div>      
